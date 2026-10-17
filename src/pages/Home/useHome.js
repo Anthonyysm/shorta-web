@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { toast } from 'sonner';
+import { API_URL } from '@/lib/config';
 import api from '@/services/api';
 
 export function useHome() {
@@ -23,7 +24,7 @@ export function useHome() {
         original_url: originalUrl,
       });
 
-      const fullShortUrl = `http://127.0.0.1:8000/${response.data.short_code}`;
+      const fullShortUrl = `${API_URL}/${response.data.short_code}`;
       setShortLink(fullShortUrl);
       setOriginalUrl('');
     } catch (err) {

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { API_URL } from '@/lib/config';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
@@ -26,7 +27,7 @@ import {
 export function LinkCard({ link, isCopied, onCopy, onDelete }) {
   const [confirmOpen, setConfirmOpen] = useState(false);
 
-  const shortUrl = `http://127.0.0.1:8000/${link.short_code}`;
+  const shortUrl = `${API_URL}/${link.short_code}`;
   const totalClicks = link.clicks_count ?? link.clicks?.length ?? link.click_count ?? 0;
 
   return (

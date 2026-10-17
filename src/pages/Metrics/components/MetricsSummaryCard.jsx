@@ -1,8 +1,9 @@
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { API_URL } from '@/lib/config';
 import { BarChart2, Clock, ExternalLink, MousePointerClick } from 'lucide-react';
 
 export function MetricsSummaryCard({ metrics }) {
-  const shortUrl = `http://127.0.0.1:8000/${metrics.short_code}`;
+  const shortUrl = `${API_URL}/${metrics.short_code}`;
   const totalClicks = metrics.clicks?.length ?? metrics.clicks_count ?? 0;
 
   return (

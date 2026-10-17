@@ -1,5 +1,6 @@
 import { useState, useEffect, useMemo } from 'react';
 import { toast } from 'sonner';
+import { API_URL } from '@/lib/config';
 import api from '@/services/api';
 
 const getClicks = (link) =>
@@ -99,7 +100,7 @@ export function useDashboard() {
 
   // Copia o link encurtado
   const handleCopy = (id, shortCode) => {
-    const fullUrl = `http://127.0.0.1:8000/${shortCode}`;
+    const fullUrl = `${API_URL}/${shortCode}`;
     navigator.clipboard.writeText(fullUrl);
     setCopiedId(id);
     toast.success('Link copiado!', { duration: 2000 });
