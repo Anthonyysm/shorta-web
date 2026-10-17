@@ -18,7 +18,7 @@ export function useRegister() {
     setError('');
 
     if (password !== confirmPassword) {
-      setError('As senhas não coincidem.');
+      setError('As senhas não combinam. Confere pra gente?');
       return;
     }
 
@@ -36,8 +36,8 @@ export function useRegister() {
       navigate('/dashboard');
     } catch (err) {
       setError(
-        err.response?.data?.detail || 
-        'Erro ao criar conta. Este e-mail já pode estar em uso.'
+        err.response?.data?.detail ||
+        'Algo deu errado criando a conta. Tenta de novo?'
       );
     } finally {
       setLoading(false);

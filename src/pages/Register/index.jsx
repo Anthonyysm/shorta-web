@@ -16,10 +16,10 @@ export default function Register() {
   } = useRegister();
 
   return (
-    <div className="min-h-screen bg-zinc-950 text-zinc-100 flex flex-col">
+    <div className="flex min-h-screen flex-col bg-background text-foreground">
       <Navbar />
 
-      <main className="flex-1 flex items-center justify-center p-4">
+      <main className="flex flex-1 items-center justify-center p-4">
         <RegisterFormCard
           email={email}
           setEmail={setEmail}

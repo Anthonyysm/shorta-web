@@ -21,8 +21,8 @@ export function useLogin() {
       navigate('/dashboard');
     } catch (err) {
       setError(
-        err.response?.data?.detail || 
-        'E-mail ou senha incorretos. Verifique suas credenciais.'
+        err.response?.data?.detail ||
+        'E-mail ou senha incorretos. Confere pra gente?'
       );
     } finally {
       setLoading(false);

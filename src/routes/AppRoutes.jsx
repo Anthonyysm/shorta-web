@@ -11,8 +11,8 @@ function PrivateRoute({ children }) {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-zinc-950 text-white flex items-center justify-center font-mono">
-        Carregando...
+      <div className="flex min-h-screen items-center justify-center bg-background text-muted-foreground">
+        Carregando…
       </div>
     );
   }
