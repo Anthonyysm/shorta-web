@@ -1,84 +1,118 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
+import { Tooltip, TooltipTrigger, TooltipContent } from '@/components/ui/tooltip';
 import {
-  Copy,
-  Check,
-  Trash2,
-  ExternalLink,
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from '@/components/ui/alert-dialog';
+import {
   BarChart2,
+  Check,
+  Copy,
+  ExternalLink,
   MousePointerClick,
+  Trash2,
 } from 'lucide-react';
 
 export function LinkCard({ link, isCopied, onCopy, onDelete }) {
+  const [confirmOpen, setConfirmOpen] = useState(false);
+
   const shortUrl = `http://127.0.0.1:8000/${link.short_code}`;
   const totalClicks = link.clicks_count ?? link.clicks?.length ?? link.click_count ?? 0;
 
   return (
-    <Card className="bg-zinc-900 border-zinc-800 hover:border-zinc-700 transition-colors shadow-lg">
-      <CardContent className="p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <div className="space-y-1 overflow-hidden">
-          <div className="flex items-center gap-3">
+    <Card className="transition-colors duration-150 hover:border-muted-foreground/30">
+      <CardContent className="flex flex-col gap-3 p-4 sm:flex-row sm:items-center sm:justify-between">
+        <div className="min-w-0 space-y-1.5">
+          <div className="flex items-center gap-2">
             <a
               href={shortUrl}
               target="_blank"
               rel="noreferrer"
-              className="font-mono text-indigo-400 hover:text-indigo-300 font-bold text-base truncate flex items-center gap-1.5"
+              className="flex min-w-0 items-center gap-1.5 font-mono text-sm font-medium text-foreground transition-colors duration-150 hover:text-primary"
             >
-              {shortUrl}
-              <ExternalLink className="h-3.5 w-3.5 shrink-0" />
+              <span className="truncate">{shortUrl}</span>
+              <ExternalLink className="size-3.5 shrink-0 text-muted-foreground" />
             </a>
 
-            <span className="inline-flex items-center gap-1 bg-zinc-950 border border-zinc-800 px-2 py-0.5 rounded text-xs text-zinc-400 font-mono shrink-0">
-              <MousePointerClick className="h-3 w-3 text-indigo-400" />
+            <Badge variant="secondary" className="shrink-0 gap-1 font-mono">
+              <MousePointerClick className="size-3" />
               {totalClicks} cliques
-            </span>
+            </Badge>
           </div>
 
-          <p className="text-zinc-500 text-xs truncate max-w-xl">
-            {link.original_url}
-          </p>
+          <Tooltip>
+            <TooltipTrigger
+              render={
+                <span className="block max-w-xl truncate text-xs text-muted-foreground" />
+              }
+            >
+              {link.original_url}
+            </TooltipTrigger>
+            <TooltipContent>{link.original_url}</TooltipContent>
+          </Tooltip>
         </div>
 
-        <div className="flex items-center gap-2 shrink-0 self-end sm:self-center">
+        <div className="flex shrink-0 items-center gap-1 self-end sm:self-center">
           <Link to={`/metrics/${link.short_code}`}>
-            <Button
-              variant="outline"
-              size="sm"
-              className="border-zinc-800 bg-zinc-950 hover:bg-zinc-800 text-zinc-300 gap-1.5"
-            >
-              <BarChart2 className="h-3.5 w-3.5 text-indigo-400" />
-              <span>Métricas</span>
+            <Button variant="outline" size="sm" className="gap-1.5">
+              <BarChart2 className="size-3.5" />
+              Métricas
             </Button>
           </Link>
 
           <Button
-            variant="outline"
-            size="sm"
+            variant="ghost"
+            size="icon-sm"
             onClick={() => onCopy(link.id, link.short_code)}
-            className="border-zinc-800 bg-zinc-950 hover:bg-zinc-800 text-zinc-300 gap-1.5"
+            aria-label={isCopied ? 'Link copiado' : 'Copiar link'}
+            className="text-muted-foreground"
           >
             {isCopied ? (
-              <>
-                <Check className="h-3.5 w-3.5 text-emerald-400" />
-                <span className="text-emerald-400">Copiado</span>
-              </>
+              <Check className="text-foreground" />
             ) : (
-              <>
-                <Copy className="h-3.5 w-3.5" />
-                <span>Copiar</span>
-              </>
+              <Copy />
             )}
           </Button>
 
           <Button
             variant="ghost"
-            size="sm"
-            onClick={() => onDelete(link.id)}
-            className="text-zinc-500 hover:text-red-400 hover:bg-red-950/30 h-9 w-9 p-0"
+            size="icon-sm"
+            onClick={() => setConfirmOpen(true)}
+            aria-label="Excluir link"
+            className="text-muted-foreground hover:text-destructive"
           >
-            <Trash2 className="h-4 w-4" />
+            <Trash2 />
           </Button>
+
+          <AlertDialog open={confirmOpen} onOpenChange={setConfirmOpen}>
+            <AlertDialogContent>
+              <AlertDialogHeader>
+                <AlertDialogTitle>Excluir este link?</AlertDialogTitle>
+                <AlertDialogDescription>
+                  O link deixa de funcionar e não dá pra desfazer.
+                </AlertDialogDescription>
+              </AlertDialogHeader>
+              <AlertDialogFooter>
+                <AlertDialogCancel>Cancelar</AlertDialogCancel>
+                <AlertDialogAction
+                  variant="destructive"
+                  onClick={() => onDelete(link.id)}
+                >
+                  Excluir
+                </AlertDialogAction>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialog>
         </div>
       </CardContent>
     </Card>

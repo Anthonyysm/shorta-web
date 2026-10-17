@@ -1,9 +1,19 @@
 import Navbar from '@/components/Navbar';
 import { Card, CardContent } from '@/components/ui/card';
-import { Link2, BarChart2 } from 'lucide-react';
+import { Input } from '@/components/ui/input';
+import { Skeleton } from '@/components/ui/skeleton';
+import { Button } from '@/components/ui/button';
+import { BarChart2, Search } from 'lucide-react';
 import { useDashboard } from './useDashboard';
 import { CreateLinkCard } from './components/CreateLinkCard';
 import { LinkCard } from './components/LinkCard';
+
+const SORT_OPTIONS = [
+  { key: 'recentes', label: 'Mais recentes' },
+  { key: 'antigos', label: 'Mais antigos' },
+  { key: 'cliques', label: 'Mais clicados' },
+  { key: 'poucos', label: 'Menos clicados' },
+];
 
 export default function Dashboard() {
   const {
@@ -14,17 +24,64 @@ export default function Dashboard() {
     creating,
     error,
     copiedId,
+    search,
+    setSearch,
+    sortBy,
+    setSortBy,
+    filteredLinks,
+    totalClicks,
+    topLink,
     handleCreateLink,
     handleDeleteLink,
     handleCopy,
   } = useDashboard();
 
   return (
-    <div className="min-h-screen bg-zinc-950 text-zinc-100 flex flex-col">
+    <div className="flex min-h-screen flex-col bg-background text-foreground">
       <Navbar />
 
-      <main className="flex-1 max-w-5xl w-full mx-auto p-4 sm:p-6 space-y-8">
-        {/* Formulário de Criação */}
+      <main className="mx-auto w-full max-w-5xl flex-1 space-y-8 p-4 sm:p-6">
+        {!loading && links.length > 0 && (
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
+            <Card>
+              <CardContent className="p-4">
+                <span className="block text-xs font-medium tracking-wider text-muted-foreground uppercase">
+                  Total de links
+                </span>
+                <span className="text-2xl font-bold text-foreground">
+                  {links.length}
+                </span>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardContent className="p-4">
+                <span className="block text-xs font-medium tracking-wider text-muted-foreground uppercase">
+                  Total de cliques
+                </span>
+                <span className="text-2xl font-bold text-foreground">
+                  {totalClicks}
+                </span>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardContent className="p-4">
+                <span className="block text-xs font-medium tracking-wider text-muted-foreground uppercase">
+                  Link mais clicado
+                </span>
+                {topLink ? (
+                  <span className="block truncate font-mono text-sm font-medium text-foreground">
+                    {topLink.short_code}
+                  </span>
+                ) : (
+                  <span className="text-2xl font-bold text-muted-foreground">
+                    —
+                  </span>
+                )}
+              </CardContent>
+            </Card>
+          </div>
+        )}
+
         <CreateLinkCard
           originalUrl={originalUrl}
           setOriginalUrl={setOriginalUrl}
@@ -33,30 +90,75 @@ export default function Dashboard() {
           error={error}
         />
 
-        {/* Lista de Links */}
         <div className="space-y-4">
-          <div className="flex items-center justify-between">
-            <h2 className="text-xl font-bold text-white flex items-center gap-2">
-              <BarChart2 className="h-5 w-5 text-indigo-400" />
-              Meus Links ({links.length})
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <h2 className="flex items-center gap-2 text-lg font-semibold text-foreground">
+              <BarChart2 className="size-5 text-muted-foreground" />
+              Meus Links ({search.trim() ? `${filteredLinks.length} de ${links.length}` : links.length})
             </h2>
+
+            {!loading && links.length > 0 && (
+              <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
+                <div className="relative sm:w-64">
+                  <Search className="pointer-events-none absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+                  <Input
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
+                    placeholder="Buscar por link…"
+                    aria-label="Buscar link"
+                    className="h-9 rounded-lg pl-9 text-sm"
+                  />
+                </div>
+                <div className="flex flex-wrap gap-1">
+                  {SORT_OPTIONS.map((option) => (
+                    <Button
+                      key={option.key}
+                      variant={sortBy === option.key ? 'secondary' : 'ghost'}
+                      size="xs"
+                      onClick={() => setSortBy(option.key)}
+                      className={
+                        sortBy === option.key
+                          ? ''
+                          : 'text-muted-foreground'
+                      }
+                    >
+                      {option.label}
+                    </Button>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
 
           {loading ? (
-            <div className="text-center py-12 text-zinc-500 font-mono">
-              Carregando seus links...
+            <div className="space-y-3">
+              {[0, 1, 2].map((i) => (
+                <Skeleton key={i} className="h-24 rounded-xl" />
+              ))}
             </div>
           ) : links.length === 0 ? (
-            <Card className="bg-zinc-900/50 border-zinc-800 text-center py-12">
-              <CardContent className="space-y-3">
-                <Link2 className="h-10 w-10 text-zinc-600 mx-auto" />
-                <p className="text-zinc-400 font-medium">Você ainda não possui nenhum link encurtado.</p>
-                <p className="text-zinc-600 text-xs">Cole uma URL no campo acima para gerar seu primeiro link.</p>
+            <Card className="py-12">
+              <CardContent className="flex flex-col items-center gap-3 text-center">
+                <img
+                  src="/brand/serpente.ico"
+                  alt=""
+                  aria-hidden="true"
+                  className="h-16 w-16 object-contain opacity-60"
+                />
+                <p className="font-medium text-foreground">
+                  Nenhum link por aqui ainda. Que tal encurtar o primeiro?
+                </p>
+              </CardContent>
+            </Card>
+          ) : filteredLinks.length === 0 ? (
+            <Card className="py-10">
+              <CardContent className="text-center text-sm text-muted-foreground">
+                Nenhum link encontrado pra “{search.trim()}”.
               </CardContent>
             </Card>
           ) : (
             <div className="space-y-3">
-              {links.map((link) => (
+              {filteredLinks.map((link) => (
                 <LinkCard
                   key={link.id}
                   link={link}
