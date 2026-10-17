@@ -4,6 +4,7 @@ import Home from '@/pages/Home';
 import Login from '@/pages/Login';
 import Register from '@/pages/Register';
 import Dashboard from '@/pages/Dashboard';
+import Metrics from '@/pages/Metrics';
 
 function PrivateRoute({ children }) {
   const { signed, loading } = useAuth();
@@ -31,6 +32,16 @@ export default function AppRoutes() {
         element={
           <PrivateRoute>
             <Dashboard />
+          </PrivateRoute>
+        }
+      />
+
+      {/* Rota de Métricas por shortCode */}
+      <Route
+        path="/metrics/:shortCode"
+        element={
+          <PrivateRoute>
+            <Metrics />
           </PrivateRoute>
         }
       />
