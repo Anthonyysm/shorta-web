@@ -16,7 +16,7 @@ export function AuthProvider({ children }) {
         try {
           const response = await api.get('/users/me');
           setUser(response.data);
-        } catch (error) {
+        } catch {
           // Se o token estiver expirado ou for inválido, limpa o storage
           localStorage.removeItem('shorta_token');
           setUser(null);
@@ -60,6 +60,7 @@ export function AuthProvider({ children }) {
 }
 
 
+// eslint-disable-next-line react-refresh/only-export-components
 export function useAuth() {
   return useContext(AuthContext);
 }
