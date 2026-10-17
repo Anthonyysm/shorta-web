@@ -13,13 +13,14 @@ export default function Home() {
     copied,
     handleShorten,
     handleCopy,
+    reset,
   } = useHome();
 
   return (
-    <div className="min-h-screen bg-zinc-950 text-zinc-100 flex flex-col">
+    <div className="flex min-h-screen flex-col bg-background text-foreground">
       <Navbar />
 
-      <main className="flex-1 flex flex-col items-center justify-center p-4 max-w-4xl mx-auto w-full text-center">
+      <main className="mx-auto flex w-full max-w-2xl flex-1 flex-col items-center justify-center px-4 py-12 text-center sm:px-6">
         <HeroSection />
         <ShortenCard
           originalUrl={originalUrl}
@@ -30,6 +31,7 @@ export default function Home() {
           shortLink={shortLink}
           copied={copied}
           onCopy={handleCopy}
+          onReset={reset}
         />
       </main>
     </div>

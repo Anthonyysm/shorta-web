@@ -1,7 +1,8 @@
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Link2, Copy, Check, ArrowRight } from 'lucide-react';
+import { Label } from '@/components/ui/label';
+import { Card, CardContent } from '@/components/ui/card';
+import { ArrowRight, Check, Copy, Link2, Loader2 } from 'lucide-react';
 
 export function ShortenCard({
   originalUrl,
@@ -12,72 +13,83 @@ export function ShortenCard({
   shortLink,
   copied,
   onCopy,
+  onReset,
 }) {
   return (
-    <Card className="w-full max-w-2xl bg-zinc-900 border-zinc-800 text-zinc-100 shadow-2xl">
-      <CardHeader className="text-left pb-4">
-        <CardTitle className="text-xl font-semibold text-white">Cole a URL longa</CardTitle>
-        <CardDescription className="text-zinc-400 text-xs">
-          Certifique-se de incluir o protocolo{' '}
-          <code className="bg-zinc-950 text-indigo-400 px-1 py-0.5 rounded border border-zinc-800 font-mono">
-            https://
-          </code>
-        </CardDescription>
-      </CardHeader>
+    <div className="w-full max-w-2xl text-left">
+      <form onSubmit={onSubmit} className="flex flex-col gap-3 sm:flex-row">
+        <div className="relative flex-1">
+          <Label htmlFor="original-url" className="sr-only">
+            Link original
+          </Label>
+          <Link2 className="pointer-events-none absolute top-1/2 left-3.5 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+          <Input
+            id="original-url"
+            type="url"
+            placeholder="https://seu-link-muito-longo.com/..."
+            value={originalUrl}
+            onChange={(e) => setOriginalUrl(e.target.value)}
+            className="h-12 pl-10"
+            required
+          />
+        </div>
+        <Button
+          type="submit"
+          size="lg"
+          disabled={loading}
+          className="h-12 shrink-0 gap-2 rounded-xl px-6"
+        >
+          {loading ? (
+            <Loader2 className="size-4 animate-spin" />
+          ) : (
+            <ArrowRight className="size-4" />
+          )}
+          {loading ? 'Encurtando…' : 'Encurtar'}
+        </Button>
+      </form>
 
-      <CardContent className="space-y-4">
-        <form onSubmit={onSubmit} className="flex flex-col sm:flex-row gap-3">
-          <div className="relative flex-1">
-            <Link2 className="absolute left-3 top-3.5 h-4 w-4 text-zinc-500" />
-            <Input
-              type="url"
-              placeholder="https://exemplo.com/pagina-muito-longa"
-              value={originalUrl}
-              onChange={(e) => setOriginalUrl(e.target.value)}
-              className="pl-9 h-11 bg-zinc-950 border-zinc-800 text-white placeholder:text-zinc-600 focus-visible:ring-indigo-500 focus-visible:ring-1"
-              required
-            />
-          </div>
-          <Button
-            type="submit"
-            disabled={loading}
-            className="h-11 bg-indigo-600 hover:bg-indigo-500 text-white font-medium px-6 gap-2 shrink-0"
-          >
-            {loading ? 'Encurtando...' : 'Encurtar'}
-            <ArrowRight className="h-4 w-4" />
-          </Button>
-        </form>
+      {error && (
+        <p className="mt-3 text-left text-sm font-medium text-destructive">
+          {error}
+        </p>
+      )}
 
-        {error && (
-          <p className="text-red-400 text-sm text-left font-medium">{error}</p>
-        )}
-
-        {shortLink && (
-          <div className="mt-4 p-4 bg-zinc-950 border border-zinc-800 rounded-lg flex flex-col sm:flex-row items-center justify-between gap-3 text-left">
-            <div className="overflow-hidden w-full">
-              <span className="text-[10px] uppercase font-bold text-indigo-400 tracking-wider block mb-0.5">
-                Seu link encurtado:
-              </span>
-              <a
-                href={shortLink}
-                target="_blank"
-                rel="noreferrer"
-                className="font-mono text-sm text-zinc-200 font-bold hover:text-indigo-400 truncate block transition-colors"
-              >
-                {shortLink}
-              </a>
-            </div>
-            <Button
-              onClick={onCopy}
-              variant="outline"
-              className="w-full sm:w-auto border-zinc-700 bg-zinc-900 hover:bg-zinc-800 text-zinc-200 gap-2 shrink-0"
+      {shortLink && (
+        <Card className="animate-fade-in mt-6">
+          <CardContent className="flex flex-col gap-3 p-4 sm:flex-row sm:items-center sm:justify-between">
+            <a
+              href={shortLink}
+              target="_blank"
+              rel="noreferrer"
+              className="block min-w-0 flex-1"
             >
-              {copied ? <Check className="h-4 w-4 text-emerald-400" /> : <Copy className="h-4 w-4" />}
-              {copied ? 'Copiado!' : 'Copiar'}
-            </Button>
-          </div>
-        )}
-      </CardContent>
-    </Card>
+              <span className="mb-0.5 block text-xs font-medium tracking-wider text-muted-foreground uppercase">
+                Seu link encurtado
+              </span>
+              <span className="block truncate font-mono text-sm font-medium text-foreground transition-colors duration-150 hover:text-primary">
+                {shortLink}
+              </span>
+            </a>
+            <div className="flex shrink-0 gap-2">
+              <Button variant="secondary" onClick={onCopy} className="gap-2">
+                {copied ? (
+                  <Check className="size-4" />
+                ) : (
+                  <Copy className="size-4" />
+                )}
+                {copied ? 'Copiado!' : 'Copiar'}
+              </Button>
+              <Button
+                variant="ghost"
+                onClick={onReset}
+                className="text-muted-foreground"
+              >
+                Encurtar outro
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
+      )}
+    </div>
   );
 }

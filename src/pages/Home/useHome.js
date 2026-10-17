@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { toast } from 'sonner';
 import api from '@/services/api';
 
 export function useHome() {
@@ -27,8 +28,8 @@ export function useHome() {
       setOriginalUrl('');
     } catch (err) {
       setError(
-        err.response?.data?.detail?.[0]?.msg || 
-        'Erro ao encurtar URL. Verifique se o backend FastAPI está rodando.'
+        err.response?.data?.detail?.[0]?.msg ||
+        'Algo deu errado. Tenta de novo?'
       );
     } finally {
       setLoading(false);
@@ -39,7 +40,15 @@ export function useHome() {
     if (!shortLink) return;
     navigator.clipboard.writeText(shortLink);
     setCopied(true);
+    toast.success('Link copiado!', { duration: 2000 });
     setTimeout(() => setCopied(false), 2000);
+  };
+
+  const reset = () => {
+    setShortLink('');
+    setError('');
+    setCopied(false);
+    setOriginalUrl('');
   };
 
   return {
@@ -51,5 +60,6 @@ export function useHome() {
     copied,
     handleShorten,
     handleCopy,
+    reset,
   };
 }
