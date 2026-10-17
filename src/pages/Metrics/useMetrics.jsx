@@ -17,8 +17,8 @@ export function useMetrics() {
         setMetrics(response.data);
       } catch (err) {
         setError(
-          err.response?.data?.detail || 
-          'Não foi possível carregar as métricas deste link.'
+          err.response?.data?.detail ||
+          'Algo deu errado carregando as métricas. Tenta de novo?'
         );
       } finally {
         setLoading(false);

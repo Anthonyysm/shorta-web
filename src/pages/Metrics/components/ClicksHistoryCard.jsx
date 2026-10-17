@@ -3,44 +3,50 @@ import { Globe, Monitor } from 'lucide-react';
 
 export function ClicksHistoryCard({ clicks = [] }) {
   return (
-    <Card className="bg-zinc-900 border-zinc-800 text-zinc-100 shadow-xl">
+    <Card>
       <CardHeader>
-        <CardTitle className="text-lg font-semibold text-white">
-          Histórico de Cliques ({clicks.length})
-        </CardTitle>
-        <CardDescription className="text-zinc-400 text-xs">
-          Registros individuais de cada acesso redirecionado pelo sistema
+        <CardTitle>Histórico de cliques ({clicks.length})</CardTitle>
+        <CardDescription>
+          Cada acesso ao seu link encurtado.
         </CardDescription>
       </CardHeader>
 
       <CardContent>
         {clicks.length === 0 ? (
-          <p className="text-center py-8 text-zinc-500 text-sm font-mono">
-            Nenhum clique registrado até o momento.
+          <p className="py-8 text-center text-sm text-muted-foreground">
+            Nenhum clique registrado até agora.
           </p>
         ) : (
-          <div className="overflow-x-auto">
-            <table className="w-full text-left text-xs text-zinc-300 font-mono">
-              <thead className="bg-zinc-950 text-zinc-400 uppercase text-[10px] border-b border-zinc-800">
+          <div className="overflow-x-auto rounded-lg border">
+            <table className="w-full text-left text-sm">
+              <thead className="bg-muted/50 text-xs tracking-wider text-muted-foreground uppercase">
                 <tr>
-                  <th className="py-3 px-4">Data / Hora</th>
-                  <th className="py-3 px-4">Endereço IP</th>
-                  <th className="py-3 px-4">Dispositivo / User Agent</th>
+                  <th className="px-4 py-3 font-medium">Data / hora</th>
+                  <th className="px-4 py-3 font-medium">Endereço IP</th>
+                  <th className="px-4 py-3 font-medium">Dispositivo</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-zinc-800">
+              <tbody className="divide-y">
                 {clicks.map((click) => (
-                  <tr key={click.id} className="hover:bg-zinc-950/50 transition-colors">
-                    <td className="py-3 px-4 whitespace-nowrap text-zinc-200">
+                  <tr
+                    key={click.id}
+                    className="transition-colors duration-150 hover:bg-muted/40"
+                  >
+                    <td className="whitespace-nowrap px-4 py-3 font-mono text-foreground">
                       {new Date(click.created_at).toLocaleString('pt-BR')}
                     </td>
-                    <td className="py-3 px-4 whitespace-nowrap text-indigo-400 flex items-center gap-1.5">
-                      <Globe className="h-3.5 w-3.5 text-zinc-500" />
-                      {click.ip_address || '127.0.0.1'}
+                    <td className="whitespace-nowrap px-4 py-3">
+                      <span className="flex items-center gap-1.5 font-mono text-foreground">
+                        <Globe className="size-3.5 text-muted-foreground" />
+                        {click.ip_address || '127.0.0.1'}
+                      </span>
                     </td>
-                    <td className="py-3 px-4 max-w-xs truncate text-zinc-400">
-                      <span className="flex items-center gap-1.5" title={click.user_agent}>
-                        <Monitor className="h-3.5 w-3.5 text-zinc-500 shrink-0" />
+                    <td className="max-w-xs truncate px-4 py-3 text-muted-foreground">
+                      <span
+                        className="flex items-center gap-1.5"
+                        title={click.user_agent}
+                      >
+                        <Monitor className="size-3.5 shrink-0 text-muted-foreground" />
                         {click.user_agent || 'Navegador desconhecido'}
                       </span>
                     </td>

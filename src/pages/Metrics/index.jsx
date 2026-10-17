@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import { Button } from '@/components/ui/button';
+import { Skeleton } from '@/components/ui/skeleton';
 import { ArrowLeft } from 'lucide-react';
 import { useMetrics } from './useMetrics';
 import { MetricsSummaryCard } from './components/MetricsSummaryCard';
@@ -11,24 +12,28 @@ export default function Metrics() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-zinc-950 text-zinc-100 flex flex-col">
+      <div className="flex min-h-screen flex-col bg-background text-foreground">
         <Navbar />
-        <div className="flex-1 flex items-center justify-center font-mono text-zinc-500">
-          Carregando métricas...
-        </div>
+        <main className="mx-auto w-full max-w-5xl flex-1 space-y-6 p-4 sm:p-6">
+          <Skeleton className="h-9 w-40 rounded-lg" />
+          <Skeleton className="h-64 rounded-xl" />
+          <Skeleton className="h-64 rounded-xl" />
+        </main>
       </div>
     );
   }
 
   if (error || !metrics) {
     return (
-      <div className="min-h-screen bg-zinc-950 text-zinc-100 flex flex-col">
+      <div className="flex min-h-screen flex-col bg-background text-foreground">
         <Navbar />
-        <main className="flex-1 max-w-4xl w-full mx-auto p-6 flex flex-col items-center justify-center text-center space-y-4">
-          <p className="text-red-400 font-medium">{error || 'Link não encontrado.'}</p>
-          <Button onClick={() => navigate('/dashboard')} variant="outline" className="border-zinc-800 text-zinc-300">
-            <ArrowLeft className="h-4 w-4 mr-2" />
-            Voltar ao Dashboard
+        <main className="mx-auto flex w-full max-w-4xl flex-1 flex-col items-center justify-center space-y-4 p-6 text-center">
+          <p className="font-medium text-destructive">
+            {error || 'Esse link se escondeu. Não achamos nada por aqui.'}
+          </p>
+          <Button onClick={() => navigate('/dashboard')} variant="outline" className="gap-2">
+            <ArrowLeft className="size-4" />
+            Voltar ao painel
           </Button>
         </main>
       </div>
@@ -36,22 +41,19 @@ export default function Metrics() {
   }
 
   return (
-    <div className="min-h-screen bg-zinc-950 text-zinc-100 flex flex-col">
+    <div className="flex min-h-screen flex-col bg-background text-foreground">
       <Navbar />
 
-      <main className="flex-1 max-w-5xl w-full mx-auto p-4 sm:p-6 space-y-6">
-        {/* Voltar ao Dashboard */}
+      <main className="mx-auto w-full max-w-5xl flex-1 space-y-6 p-4 sm:p-6">
         <Link to="/dashboard">
-          <Button variant="ghost" size="sm" className="text-zinc-400 hover:text-white hover:bg-zinc-900 gap-2 mb-2">
-            <ArrowLeft className="h-4 w-4" />
-            Voltar ao Painel
+          <Button variant="ghost" size="sm" className="gap-2 text-muted-foreground">
+            <ArrowLeft className="size-4" />
+            Voltar ao painel
           </Button>
         </Link>
 
-        {/* Resumo do Link */}
         <MetricsSummaryCard metrics={metrics} />
 
-        {/* Histórico de Cliques */}
         <ClicksHistoryCard clicks={metrics.clicks} />
       </main>
     </div>
