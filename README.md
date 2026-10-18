@@ -147,9 +147,6 @@ shorta-web/
 </div>
 
 
----
-
-## Autor
 
 <div align="center">
 
