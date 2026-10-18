@@ -1,9 +1,7 @@
 <div align="center">
 
 <!-- ▦ Coloque sua logo em docs/logo.png (ou use o caminho direto do repo) -->
-<img src="public/brand/SHORTA_logo_name.png" alt="Shorta" width="340" />
-
-# Shorta
+<img src="public/brand/SHORTA_logo_name.png" alt="Shorta" width="540" />
 
 **Encurte seus links. Acompanhe seus acessos.**
 
@@ -14,9 +12,6 @@ Um encurtador de URLs full-stack — moderno, direto e com métricas em tempo re
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4-38B2AC?style=flat-square&logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
 [![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)](LICENSE)
 [![Status](https://img.shields.io/badge/status-ativo-brightgreen?style=flat-square)](https://github.com/Anthonyysm/shorta-web)
-[![Ver repositório](https://img.shields.io/badge/ver_repositório-GitHub-181717?style=flat-square&logo=github)](https://github.com/Anthonyysm/shorta-web)
-
-<img src="https://github.com/Anthonyysm.png" alt="Foto de perfil de Anthonyysm" width="80" />
 
 </div>
 
@@ -31,22 +26,45 @@ Um encurtador de URLs full-stack — moderno, direto e com métricas em tempo re
 
 ## Telas
 
-<!-- ▦ Crie uma pasta docs/screenshots/ e salve as imagens abaixo com esses nomes -->
-
 <div align="center">
 
+<!-- ▦ Salve os prints em docs/screenshots/ com esses nomes:
+      home-desktop.png / home-mobile.png
+      dashboard-desktop.png / dashboard-mobile.png
+      metrics-desktop.png / metrics-mobile.png
+      login.png / register.png -->
+
 ### Home — encurtar um link
-<img src="docs/screenshots/home.png" alt="Tela inicial do Shorta" width="800" />
+<table align="center">
+  <tr>
+    <td width="65%" valign="top"><img src="docs/screenshots/home-desktop.png" alt="Home desktop" /></td>
+    <td width="35%" valign="top"><img src="docs/screenshots/home-mobile.png" alt="Home mobile" width="280" /></td>
+  </tr>
+</table>
 
 ### Painel — busca, resumo e ordenação
-<img src="docs/screenshots/dashboard.png" alt="Painel com lista de links" width="800" />
+<table align="center">
+  <tr>
+    <td width="65%" valign="top"><img src="docs/screenshots/dashboard-desktop.png" alt="Painel desktop" /></td>
+    <td width="35%" valign="top"><img src="docs/screenshots/dashboard-mobile.png" alt="Painel mobile" width="280" /></td>
+  </tr>
+</table>
 
 ### Métricas — cliques por link
-<img src="docs/screenshots/metrics.png" alt="Tela de métricas" width="800" />
+<table align="center">
+  <tr>
+    <td width="65%" valign="top"><img src="docs/screenshots/metrics-desktop.png" alt="Métricas desktop" /></td>
+    <td width="35%" valign="top"><img src="docs/screenshots/metrics-mobile.png" alt="Métricas mobile" width="280" /></td>
+  </tr>
+</table>
 
 ### Login / Cadastro
-<img src="docs/screenshots/login.png" alt="Tela de login" width="380" />
-<img src="docs/screenshots/register.png" alt="Tela de cadastro" width="380" />
+<table align="center">
+  <tr>
+    <td width="50%" align="center"><img src="docs/screenshots/login.png" alt="Tela de login" width="300" /></td>
+    <td width="50%" align="center"><img src="docs/screenshots/register.png" alt="Tela de cadastro" width="300" /></td>
+  </tr>
+</table>
 
 </div>
 
@@ -142,11 +160,9 @@ shorta-web/
 
 <img src="https://github.com/Anthonyysm.png" alt="Foto de perfil de Anthonyysm" width="120" />
 
-Feito com 💜 por **[Anthonyysm](https://github.com/Anthonyysm)**
+Feito por **[Anthonyysm](https://github.com/Anthonyysm)**
 
 [![Ver perfil no GitHub](https://img.shields.io/badge/ver_perfil-GitHub-181717?style=flat-square&logo=github)](https://github.com/Anthonyysm)
-
-<img src="https://github-readme-stats.vercel.app/api?username=Anthonyysm&show_icons=true&theme=transparent&hide_border=true&rank_icon=github" alt="GitHub stats de Anthonyysm" />
 
 </div>
 
