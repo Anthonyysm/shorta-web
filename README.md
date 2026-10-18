@@ -24,46 +24,6 @@ Um encurtador de URLs full-stack — moderno, direto e com métricas em tempo re
 
 ---
 
-## Telas
-
-<div align="center">
-
-### Home — encurtar um link
-<table align="center">
-  <tr>
-    <td width="65%" valign="top"><img src="https://github.com/user-attachments/assets/a14ada6c-aed4-4e1c-8fe3-38c6cd3af50d" alt="Home desktop" /></td>
-    <td width="35%" valign="top"><img src="https://github.com/user-attachments/assets/3f355a6f-bd86-4b24-9501-f4c534a26506" alt="Home mobile" width="280" /></td>
-  </tr>
-</table>
-
-### Painel — busca, resumo e ordenação
-<table align="center">
-  <tr>
-    <td width="65%" valign="top"><img src="https://github.com/user-attachments/assets/1363eae7-4f90-4849-b3c5-804f1914bdc4" alt="Painel desktop" /></td>
-    <td width="35%" valign="top"><img src="https://github.com/user-attachments/assets/702439a5-c598-433c-a03b-4149a791ea31" alt="Painel mobile" width="280" /></td>
-  </tr>
-</table>
-
-### Métricas — cliques por link
-<table align="center">
-  <tr>
-    <td width="65%" valign="top"><img src="https://github.com/user-attachments/assets/7ce41690-002d-4a07-ad4a-2421bae75c60" alt="Métricas desktop" /></td>
-    <td width="35%" valign="top"><img src="https://github.com/user-attachments/assets/7eedc6f0-73b4-453d-bb18-d10f101a9f23" alt="Métricas mobile" width="280" /></td>
-  </tr>
-</table>
-
-### Login / Cadastro
-<table align="center">
-  <tr>
-    <td width="50%" align="center"><img src="https://github.com/user-attachments/assets/81c34b31-31c4-44bb-b976-3359e43ff0b4" alt="Tela de login mobile" width="260" /></td>
-    <td width="50%" align="center"><img src="https://github.com/user-attachments/assets/68f8e274-d1fd-400b-9079-498d049f4316" alt="Tela de cadastro mobile" width="260" /></td>
-  </tr>
-</table>
-
-</div>
-
----
-
 ## O que tem aqui
 
 - ✂️ **Encurtador de URLs** — cole um link longo e receba um curto em segundos
@@ -145,6 +105,47 @@ shorta-web/
 - **Paleta** — cinza neutro dual-theme via tokens CSS shadcn (`:root` / `.dark`)
 - **Componentes** — primitivos Base UI customizados com classes Tailwind
 - **Motion** — transições curtas (150ms), skeleton em carregamentos e toast para feedback
+
+---
+
+## Telas
+
+<div align="center">
+
+### Home — encurtar um link
+<table align="center">
+  <tr>
+    <td width="65%" valign="top"><img src="https://github.com/user-attachments/assets/a14ada6c-aed4-4e1c-8fe3-38c6cd3af50d" alt="Home desktop" /></td>
+    <td width="35%" valign="top"><img src="https://github.com/user-attachments/assets/3f355a6f-bd86-4b24-9501-f4c534a26506" alt="Home mobile" width="280" /></td>
+  </tr>
+</table>
+
+### Painel — busca, resumo e ordenação
+<table align="center">
+  <tr>
+    <td width="65%" valign="top"><img src="https://github.com/user-attachments/assets/1363eae7-4f90-4849-b3c5-804f1914bdc4" alt="Painel desktop" /></td>
+    <td width="35%" valign="top"><img src="https://github.com/user-attachments/assets/702439a5-c598-433c-a03b-4149a791ea31" alt="Painel mobile" width="280" /></td>
+  </tr>
+</table>
+
+### Métricas — cliques por link
+<table align="center">
+  <tr>
+    <td width="65%" valign="top"><img src="https://github.com/user-attachments/assets/7ce41690-002d-4a07-ad4a-2421bae75c60" alt="Métricas desktop" /></td>
+    <td width="35%" valign="top"><img src="https://github.com/user-attachments/assets/7eedc6f0-73b4-453d-bb18-d10f101a9f23" alt="Métricas mobile" width="280" /></td>
+  </tr>
+</table>
+
+### Login / Cadastro
+<table align="center">
+  <tr>
+    <td width="50%" align="center"><img src="https://github.com/user-attachments/assets/81c34b31-31c4-44bb-b976-3359e43ff0b4" alt="Tela de login mobile" width="260" /></td>
+    <td width="50%" align="center"><img src="https://github.com/user-attachments/assets/68f8e274-d1fd-400b-9079-498d049f4316" alt="Tela de cadastro mobile" width="260" /></td>
+  </tr>
+</table>
+
+</div>
+
 
 ---
 
