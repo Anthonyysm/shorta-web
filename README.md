@@ -55,8 +55,8 @@ Um encurtador de URLs full-stack — moderno, direto e com métricas em tempo re
 ### Login / Cadastro
 <table align="center">
   <tr>
-    <td width="50%" align="center"><img src="docs/screenshots/login-mobile.png" alt="Tela de login mobile" width="260" /></td>
-    <td width="50%" align="center"><img src="docs/screenshots/register-mobile.png" alt="Tela de cadastro mobile" width="260" /></td>
+    <td width="50%" align="center"><img src="https://github.com/user-attachments/assets/81c34b31-31c4-44bb-b976-3359e43ff0b4" alt="Tela de login mobile" width="260" /></td>
+    <td width="50%" align="center"><img src="https://github.com/user-attachments/assets/68f8e274-d1fd-400b-9079-498d049f4316" alt="Tela de cadastro mobile" width="260" /></td>
   </tr>
 </table>
 
