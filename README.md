@@ -28,41 +28,35 @@ Um encurtador de URLs full-stack — moderno, direto e com métricas em tempo re
 
 <div align="center">
 
-<!-- ▦ Salve os prints em docs/screenshots/ com esses nomes:
-      home-desktop.png / home-mobile.png
-      dashboard-desktop.png / dashboard-mobile.png
-      metrics-desktop.png / metrics-mobile.png
-      login.png / register.png -->
-
 ### Home — encurtar um link
 <table align="center">
   <tr>
-    <td width="65%" valign="top"><img src="docs/screenshots/home-desktop.png" alt="Home desktop" /></td>
-    <td width="35%" valign="top"><img src="docs/screenshots/home-mobile.png" alt="Home mobile" width="280" /></td>
+    <td width="65%" valign="top"><img src="https://github.com/user-attachments/assets/a14ada6c-aed4-4e1c-8fe3-38c6cd3af50d" alt="Home desktop" /></td>
+    <td width="35%" valign="top"><img src="https://github.com/user-attachments/assets/3f355a6f-bd86-4b24-9501-f4c534a26506" alt="Home mobile" width="280" /></td>
   </tr>
 </table>
 
 ### Painel — busca, resumo e ordenação
 <table align="center">
   <tr>
-    <td width="65%" valign="top"><img src="docs/screenshots/dashboard-desktop.png" alt="Painel desktop" /></td>
-    <td width="35%" valign="top"><img src="docs/screenshots/dashboard-mobile.png" alt="Painel mobile" width="280" /></td>
+    <td width="65%" valign="top"><img src="https://github.com/user-attachments/assets/1363eae7-4f90-4849-b3c5-804f1914bdc4" alt="Painel desktop" /></td>
+    <td width="35%" valign="top"><img src="https://github.com/user-attachments/assets/702439a5-c598-433c-a03b-4149a791ea31" alt="Painel mobile" width="280" /></td>
   </tr>
 </table>
 
 ### Métricas — cliques por link
 <table align="center">
   <tr>
-    <td width="65%" valign="top"><img src="docs/screenshots/metrics-desktop.png" alt="Métricas desktop" /></td>
-    <td width="35%" valign="top"><img src="docs/screenshots/metrics-mobile.png" alt="Métricas mobile" width="280" /></td>
+    <td width="65%" valign="top"><img src="https://github.com/user-attachments/assets/7ce41690-002d-4a07-ad4a-2421bae75c60" alt="Métricas desktop" /></td>
+    <td width="35%" valign="top"><img src="https://github.com/user-attachments/assets/7eedc6f0-73b4-453d-bb18-d10f101a9f23" alt="Métricas mobile" width="280" /></td>
   </tr>
 </table>
 
 ### Login / Cadastro
 <table align="center">
   <tr>
-    <td width="50%" align="center"><img src="docs/screenshots/login.png" alt="Tela de login" width="300" /></td>
-    <td width="50%" align="center"><img src="docs/screenshots/register.png" alt="Tela de cadastro" width="300" /></td>
+    <td width="50%" align="center"><img src="docs/screenshots/login-mobile.png" alt="Tela de login mobile" width="260" /></td>
+    <td width="50%" align="center"><img src="docs/screenshots/register-mobile.png" alt="Tela de cadastro mobile" width="260" /></td>
   </tr>
 </table>
 
