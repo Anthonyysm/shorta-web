@@ -14,6 +14,9 @@ Um encurtador de URLs full-stack — moderno, direto e com métricas em tempo re
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4-38B2AC?style=flat-square&logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
 [![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)](LICENSE)
 [![Status](https://img.shields.io/badge/status-ativo-brightgreen?style=flat-square)](https://github.com/Anthonyysm/shorta-web)
+[![Ver repositório](https://img.shields.io/badge/ver_repositório-GitHub-181717?style=flat-square&logo=github)](https://github.com/Anthonyysm/shorta-web)
+
+<img src="https://github.com/Anthonyysm.png" alt="Foto de perfil de Anthonyysm" width="80" />
 
 </div>
 
@@ -137,11 +140,13 @@ shorta-web/
 
 <div align="center">
 
+<img src="https://github.com/Anthonyysm.png" alt="Foto de perfil de Anthonyysm" width="120" />
+
 Feito com 💜 por **[Anthonyysm](https://github.com/Anthonyysm)**
 
-<img src="https://github-readme-stats.vercel.app/api?username=Anthonyysm&show_icons=true&theme=transparent&hide_border=true&rank_icon=github" alt="GitHub stats de Anthonyysm" />
+[![Ver perfil no GitHub](https://img.shields.io/badge/ver_perfil-GitHub-181717?style=flat-square&logo=github)](https://github.com/Anthonyysm)
 
-<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Anthonyysm&layout=compact&theme=transparent&hide_border=true" alt="Linguagens mais usadas" />
+<img src="https://github-readme-stats.vercel.app/api?username=Anthonyysm&show_icons=true&theme=transparent&hide_border=true&rank_icon=github" alt="GitHub stats de Anthonyysm" />
 
 </div>
 
