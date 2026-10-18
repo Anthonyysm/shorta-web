@@ -72,7 +72,7 @@ Um encurtador de URLs full-stack — moderno, direto e com métricas em tempo re
 | Componentes | Base UI, lucide-react, Sonner |
 | Estado | Context API + hooks customizados |
 | HTTP | Axios |
-| Back-end | FastAPI (Python) — repositório `shorta-api` |
+| Back-end | FastAPI (Python) — [Anthonyysm/shorta-api](https://github.com/Anthonyysm/shorta-api) |
 
 ---
 
@@ -92,7 +92,7 @@ npm install
 npm run dev
 ```
 
-O front-end sobe em `http://localhost:5173` e se conecta à API definida em `VITE_API_URL`.
+O front-end sobe em `http://localhost:5173` e se conecta à API definida em `VITE_API_URL`. O back-end está em [Anthonyysm/shorta-api](https://github.com/Anthonyysm/shorta-api).
 
 ### Scripts disponíveis
 
